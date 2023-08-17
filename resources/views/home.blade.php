@@ -9,7 +9,7 @@
             </div>
             <div class="text-center mt-5">
                 <p style="font-family: 'Poppins';font-size:1.2rem;">Craving something delicious?Look no further!UnivFoods brings you the best dining experience with a wide selection of the great restaurants/cafes for university students </p>
-                <a href="#" class="btn btn-danger" style="font-family:Poppins">Start Here!</a>
+                <a href="/signup" class="btn btn-danger" style="font-family:Poppins">Start Here!</a>
             </div>
         </div>
         <img class="d-none d-lg-block w-50 img-fluid" src="bg-img\lily-banse--YHSwy6uqvk-unsplash.jpg" alt="">
@@ -45,8 +45,7 @@
                     <li><b>Easy Ordering:</b> Place your order in just a few clicks. Customize your meal 
                         according to your preferences, add special instructions, and choose your preferred payment method.</li>
                     <li><b>Scheduled Delivery:</b>Our efficient delivery team works tirelessly to ensure your food reaches you
-                        hot and fresh, Track your order in real-time and know exactly when it will arrive.</li>
-                        
+                        hot and fresh, Track your order in real-time and know exactly when it will arrive.</li>  
                 </ol>
             </div>
             <div class="col-md-6 col-12">
