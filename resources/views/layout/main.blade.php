@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UnivFoods | {{ $title }}</title>
-    <link rel="shortcut icon" href="delivery-bike.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/icon/delivery-bike.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

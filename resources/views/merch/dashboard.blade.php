@@ -3,8 +3,9 @@
 @section('container')
 <div class="container mt-5">
     <h2>Merchant Profile</h2>
-    <form method="post" action="}}">
+    <form method="post" action="">
         @csrf
+
         <div class="form-group">
             <label for="name">Merchant Name:</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $merch->name }}" readonly>
@@ -21,8 +22,27 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" value="********" readonly>
         </div>
-        <button type="button" class="btn btn-primary" id="editButton">Edit</button>
+        <button type="button" class="btn mt-4 btn-primary" id="editButton">Edit</button>
         <button type="submit" class="btn btn-success d-none" id="saveButton">Save</button>
     </form>
 </div>
+<script>
+    const editbtn = document.getElementById('editButton');
+    const saveBtn = document.getElementById('saveButton');
+    const inputGrp = document.querySelectorAll('input');
+    const textArea = document.querySelector('textarea');
+    const form = document.querySelector('form');
+
+    editbtn.addEventListener('click', ()=>{
+        inputGrp.forEach( (input) => {
+            input.removeAttribute('readonly');
+        });
+        textArea.removeAttribute('readonly');
+    });
+
+   
+
+   
+
+</script>
 @endsection

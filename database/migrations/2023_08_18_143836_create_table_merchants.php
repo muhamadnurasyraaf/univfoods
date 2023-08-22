@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('area_id')->references('id')->on('areas');
             $table->text('address')->nullable();
             $table->text('description')->nullable();
-            $table->string('imageUrl')->nullable();
+            $table->string('image')->nullable();
             $table->string('password');
             $table->timestamps();
         });

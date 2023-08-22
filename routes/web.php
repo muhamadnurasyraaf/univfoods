@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\EateryController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\MerchSignUpController;
 use Illuminate\Support\Facades\Route;
@@ -32,11 +34,7 @@ Route::get('/contact',function(){
     ]);
 });
 
-Route::get('/eatery',function(){
-   return view('eatery',[
-    'title' => 'Eatery',
-   ]); 
-});
+Route::get('/eatery',[EateryController::class,'index']);
 
 Route::get('/profile',function(){
     return view('profile.index',[
@@ -58,9 +56,16 @@ Route::post('/logout',[LoginController::class,'logout']);
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('admin');
 
 //merchant
-Route::get('/merch-signup',[MerchSignUpController::class,'index']);
+Route::get('/merch-signup',[MerchSignUpController::class,'index'])->middleware('auth');
 Route::get('/merchdash',[MerchantController::class,'index']);
 Route::post('/merch-signup',[MerchSignUpController::class,'store']);
+Route::get('/merchdash/{id}',[MerchantController::class,'showMerch']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/area',[AreaController::class,'index'])->middleware('admin');
+
+Route::post('/area',[AreaController::class,'store']);
+
+Route::post('/delete-area/{id}',[AreaController::class,'destroy']);

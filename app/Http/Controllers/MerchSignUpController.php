@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,23 +11,32 @@ use Illuminate\Support\Facades\Hash;
 class MerchSignUpController extends Controller
 {
     public function index(){
-        return view('merch.signup',['title' => 'Merchant Sign Up']);
+        return view('merch.signup',[
+            'title' => 'Merchant Sign Up',
+            'area' => Area::all(),
+        ]);
     }
 
     public function store(Request $request){
         $user = auth()->user();
+        
         $validatedData = $request->validate([
             'name' => ['required','min:5','max:40','unique:merchants'],
-            'area' => ['required'],
+            'area_id' => ['required'],
             'password' => ['required','min:7','max:20'],
+            'image' => ['image','file','max:1024'],
         ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('merch-icon');
+        }
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['user_id'] = $user->id;
 
         $user->merchant_owner = 1;
         $user->save();
-        $merch = Merchant::create($validatedData);
+        Merchant::create($validatedData);
 
         return redirect()->intended('/merchdash');
     }
