@@ -22,7 +22,7 @@ class WelcomeEmail extends Mailable
     public function build(){
         return $this->subject('Welcome to UnivFoods ' . auth()->user()->username . '! We would greatly appreciate it if you could take a moment to provide us with feedback related to our service.')
             ->to(auth()->user()->email)
-            ->view('email.welcome_email');
+            ->view('emails.welcome');
     }
 
     /**

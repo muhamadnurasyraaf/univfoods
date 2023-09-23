@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AreaController;
-use App\Http\Controllers\EateryController;
-use App\Http\Controllers\MerchantController;
-use App\Http\Controllers\MerchSignUpController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EateryController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MerchSignUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,11 @@ Route::get('/area',[AreaController::class,'index'])->middleware('admin');
 Route::post('/area',[AreaController::class,'store']);
 
 Route::post('/delete-area/{id}',[AreaController::class,'destroy']);
+
+
+//update profile
+Route::get('/changepass',function (){
+    return view('profile.password',['title' => 'Password']);
+});
+
+Route::post('/changepass',[UserController::class,'changePass']);

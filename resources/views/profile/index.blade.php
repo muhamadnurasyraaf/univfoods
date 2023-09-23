@@ -2,6 +2,11 @@
 
 @section('container')
 <div class="col-lg-6 mt-5">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h2>User Profile</h2>
     <table class="table">
         <tbody>
@@ -22,7 +27,7 @@
             <tr>
                 <td>Email Verified At</td>
                 <td><input type="text" class="form-control" readonly value="{{ auth()->user()->email_verified_at }}"></td>
-                
+
             </tr>
             <tr>
                 <td>Merchant Owner</td>
@@ -36,7 +41,7 @@
             <tr>
                 <td>Password</td>
                 <td><input type="text" class="form-control" readonly value="********"></td>
-                <td><a href="" class="btn btn-outline-secondary">Change your password</a></td>
+                <td><a href="/changepass" class="btn btn-outline-secondary">Change your password</a></td>
             </tr>
             <tr>
                 <td>Created At</td>
