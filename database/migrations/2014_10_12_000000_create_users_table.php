@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('merchant_owner')->default(false);
             $table->boolean('isAdmin')->default(false);
+            $table->string('phone_number')->nullable();
+            $table->string('confirmation_code')->nullable();
+            $table->boolean('phone_number_verified')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

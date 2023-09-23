@@ -15,6 +15,13 @@ class MerchantController extends Controller
         ]);
     }
 
+    public function profile($id){
+        return view('merch.profile',[
+            'title' => 'Merchant Profile',
+            'merch' => Merchant::find($id)
+        ]);
+    }
+
     public function showMerch($id){
         return view('merch.dashboard',[
             'title' => 'Merchant Dashboard',

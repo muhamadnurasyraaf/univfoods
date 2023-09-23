@@ -60,6 +60,7 @@ Route::get('/merch-signup',[MerchSignUpController::class,'index'])->middleware('
 Route::get('/merchdash',[MerchantController::class,'index']);
 Route::post('/merch-signup',[MerchSignUpController::class,'store']);
 Route::get('/merchdash/{id}',[MerchantController::class,'showMerch']);
+Route::get('/merchprofile/{id}',[MerchantController::class,'profile']);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

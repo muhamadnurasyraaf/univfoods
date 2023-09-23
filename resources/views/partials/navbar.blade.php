@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger px-3">
-    <a class="navbar-brand" style="font-family: 'Montserrat Alternates'; " href="/"><img src="{{ asset('storage/icon/delivery-bike.png') }}" alt="png" class="w-25 mx-2">UnivFoods</a>
+    <a class="navbar-brand" style="font-family: 'Montserrat Alternates'; " href="/"><img src="{{ asset('storage/icons/food-delivery.png') }}" alt="png" class="w-25 mx-2">UnivFoods</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

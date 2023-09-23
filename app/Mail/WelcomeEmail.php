@@ -5,8 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class WelcomeEmail extends Mailable
@@ -21,24 +19,10 @@ class WelcomeEmail extends Mailable
         //
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Welcome Email',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
+    public function build(){
+        return $this->subject('Welcome to UnivFoods ' . auth()->user()->username . '! We would greatly appreciate it if you could take a moment to provide us with feedback related to our service.')
+            ->to(auth()->user()->email)
+            ->view('email.welcome_email');
     }
 
     /**

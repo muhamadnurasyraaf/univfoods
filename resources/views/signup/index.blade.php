@@ -21,12 +21,19 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="phone_number" class="form-label">Phone Number</label>
+                <input id="phone_number" type="number" name="phone_number" class="form-control  @error('phone_number') is-invalid @enderror" placeholder="Phone Number ex..0102345678" autocomplete="off">
+                @error('phone_number')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
                     <input id="password" type="password" name="password" class="form-control  @error('password') is-invalid @enderror" placeholder="password" autocomplete="off">
                     <button type="button" id="see_password" class="btn"><i class="bi bi-eye"></i></button>
                 </div>
-                
+
                 @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -37,7 +44,7 @@
                     <input id="password_confirmation" type="password" name="password_confirmation" class="form-control  @error('password') is-invalid @enderror" placeholder="password confirmation" autocomplete="off">
                     <button type="button" id="see_confirmation" class="btn"><i class="bi bi-eye"></i></button>
                 </div>
-                
+
                 @if($errors->has('password_confirmation'))
                     <span class="invalid-feedback">
                         <strong>{{ $errors->first('password_confirmation')}}</strong>

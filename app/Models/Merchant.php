@@ -19,4 +19,8 @@ class Merchant extends Model
     public function area(){
         return $this->hasOne(Area::class);
     }
+
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
 }

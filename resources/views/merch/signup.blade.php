@@ -27,30 +27,12 @@
                 @endforeach
             </select>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group">
-                    <input id="password" type="password" name="password" class="form-control  @error('password') is-invalid @enderror" placeholder="password" autocomplete="off">
-                    <button type="button" id="see_password" class="btn"><i class="bi bi-eye"></i></button>
-                </div>
-                
-                @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Password Confirmation</label>
-                <div class="input-group">
-                    <input id="password_confirmation" type="password" name="password_confirmation" class="form-control  @error('password') is-invalid @enderror" placeholder="password confirmation" autocomplete="off">
-                    <button type="button" id="see_confirmation" class="btn"><i class="bi bi-eye"></i></button>
-                </div>
-                
-                @if($errors->has('password_confirmation'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('password_confirmation')}}</strong>
-                    </span>
-                @endif
-            </div>
+            <select name="category" class="form-control">
+                <option value="null" selected>Category</option>
+                <option value="">Fast Food</option>
+                <option value="">Fried Food</option>
+                <option value="">Mamak</option>
+            </select>
             <div class="text-center">
                 <input class="btn btn-danger" type="submit" value="Sign Up">
             </div>

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('merchants', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('area_id')->references('id')->on('areas');
-            $table->text('address')->nullable();
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('merchants');
+        Schema::dropIfExists('orders');
     }
 };

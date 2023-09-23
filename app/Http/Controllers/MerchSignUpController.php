@@ -15,11 +15,11 @@ class MerchSignUpController extends Controller
             'title' => 'Merchant Sign Up',
             'area' => Area::all(),
         ]);
-    }
 
+        }
     public function store(Request $request){
         $user = auth()->user();
-        
+
         $validatedData = $request->validate([
             'name' => ['required','min:5','max:40','unique:merchants'],
             'area_id' => ['required'],
