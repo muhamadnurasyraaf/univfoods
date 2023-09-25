@@ -78,4 +78,4 @@ Route::get('/changepass',function (){
     return view('profile.password',['title' => 'Password']);
 });
 
-Route::post('/changepass',[UserController::class,'changePass']);
+Route::post('/updatepassword',[UserController::class,'updatePassword'])->name('updatePassword');
