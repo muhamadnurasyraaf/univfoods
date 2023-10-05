@@ -29,7 +29,7 @@
     <div class="container mt-5">
         <h1>Product Details</h1>
         <table class="table">
-            <a href="" class="btn btn-danger">Add a product</a>
+            <a href="/add-product" class="btn btn-danger">Add a product</a>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -39,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-              
+
                 <tr>
                     <td>
                         <p>Product 1</p>

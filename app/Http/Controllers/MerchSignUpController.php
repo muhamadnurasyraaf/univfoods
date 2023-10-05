@@ -23,7 +23,6 @@ class MerchSignUpController extends Controller
         $validatedData = $request->validate([
             'name' => ['required','min:5','max:40','unique:merchants'],
             'area_id' => ['required'],
-            'password' => ['required','min:7','max:20'],
             'image' => ['image','file','max:1024'],
         ]);
 
@@ -31,12 +30,13 @@ class MerchSignUpController extends Controller
             $validatedData['image'] = $request->file('image')->store('merch-icon');
         }
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
         $validatedData['user_id'] = $user->id;
 
         $user->merchant_owner = 1;
         $user->save();
         Merchant::create($validatedData);
+
+
 
         return redirect()->intended('/merchdash');
     }

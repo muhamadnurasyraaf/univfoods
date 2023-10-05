@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UnivFoods | {{ $title }}</title>
-    <link rel="shortcut icon" href="delivery-bike.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/icons/food-delivery.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,7 +17,7 @@
    @include('partials.navbar')
 
     <div class=" min-vh-100">
-          
+
           <div class="container-fluid">
             <div class="row">
               <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -36,6 +36,12 @@
                       </a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="/area">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        Areas
+                      </a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="#">
                         <i class="bi bi-cart"></i>
                         Products
@@ -48,7 +54,7 @@
                       </a>
                     </li>
                   </ul>
-          
+
                   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Saved reports</span>
                     <a class="link-secondary" href="#" aria-label="Add a new report">
@@ -83,7 +89,7 @@
                   </ul>
                 </div>
               </nav>
-          
+
               <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Dashboard</h1>
@@ -98,7 +104,7 @@
                     </button>
                   </div>
                 </div>
-          
+
                 <div class="container mt-5">
                     <h2>User Feedback</h2>
                     <table class="table table-striped">
@@ -123,7 +129,6 @@
                                 <td>Some suggestions for improvement:...</td>
                                 <td>2023-08-11</td>
                             </tr>
-                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
@@ -259,8 +264,8 @@
               </main>
             </div>
           </div>
-          
-        
+
+
     </div>
     @include('partials.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

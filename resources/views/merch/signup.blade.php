@@ -27,13 +27,7 @@
                 @endforeach
             </select>
 
-            <select name="category" class="form-control">
-                <option value="null" selected>Category</option>
-                <option value="">Fast Food</option>
-                <option value="">Fried Food</option>
-                <option value="">Mamak</option>
-            </select>
-            <div class="text-center">
+            <div class="text-center mt-3">
                 <input class="btn btn-danger" type="submit" value="Sign Up">
             </div>
         </form>

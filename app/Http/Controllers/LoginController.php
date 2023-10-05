@@ -20,8 +20,10 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('/profile');
+        }else{
+            return back()->with('loginError','Incorrect Credentials');
         }
-        return back()->with('loginError','Login Failed');
+
     }
     public function logout(Request $request){
         $request->session()->invalidate();

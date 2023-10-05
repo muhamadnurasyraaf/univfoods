@@ -23,7 +23,7 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
             $user->save();
 
-            return redirect()->route('profile.index')->with('success','Password Updated Successfully.');
+            return redirect('/profile')->with('success','Password Updated Successfully.');
         }else{
             return back()->withErrors(['current_password' => 'The current password given is incorrect'])->withInput();
         }
