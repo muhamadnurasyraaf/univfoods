@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use App\Mail\MerchantCreated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class MerchSignUpController extends Controller
 {
@@ -34,9 +36,7 @@ class MerchSignUpController extends Controller
 
         $user->merchant_owner = 1;
         $user->save();
-        Merchant::create($validatedData);
-
-
+        $merchant = Merchant::create($validatedData);
 
         return redirect()->intended('/merchdash');
     }

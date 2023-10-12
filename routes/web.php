@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EateryController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MerchSignUpController;
@@ -36,6 +37,7 @@ Route::get('/contact',function(){
 });
 
 Route::get('/eatery',[EateryController::class,'index']);
+Route::get('/foodies',function (){return view('foodies',['title' => 'Eatery']);});
 
 Route::get('/profile',function(){
     return view('profile.index',[
@@ -65,10 +67,12 @@ Route::get('/merchprofile/{id}',[MerchantController::class,'profile']);
 
 //product
 Route::get('/add-product',function (){
-    return view('merch.add_product',['title' => 'Add Product']);
-});
-
+    return view('merch.add_product',['title' => 'Add Product']);});
+Route::get('/foodies/{id}',[ProductController::class,'index']);
 Route::post('add-product',[ProductController::class,'store']);
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -85,3 +89,6 @@ Route::get('/changepass',function (){
 });
 
 Route::post('/updatepassword',[UserController::class,'updatePassword'])->name('updatePassword');
+
+//foods
+
