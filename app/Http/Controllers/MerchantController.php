@@ -28,4 +28,12 @@ class MerchantController extends Controller
             'merch' => Merchant::find($id),
         ]);
     }
+
+    public function addProductDisplay($id){
+        $merch = Merchant::find($id);
+        return view('merch.add_product',[
+            'title' => 'Add Product',
+            'merch_id' => $merch->id,
+        ]);
+    }
 }

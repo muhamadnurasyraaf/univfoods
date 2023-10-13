@@ -3,10 +3,11 @@
 @section('container')
 
 <div class="d-flex flex-column justify-content-center align-items-center">
+
     <div class="container mt-5 col-4 border p-4">
         <form action="/add-product" class="d-flex  flex-column" method="POST" enctype="multipart/form-data">
             @csrf
-            <h4 class="text-center text-danger">Add Product</h4>
+            <h4 class="text-center text-danger">Add Product For Merch {{ $merch_id }}</h4>
             <div class="mb-3">
                 <label for="image" class="form-label">Product Image</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
@@ -43,9 +44,6 @@
                     </div>
                 @enderror
             </div>
-
-
-
 
             <div class="text-center mt-3">
                 <input class="btn btn-danger" type="submit" value="Register Product">

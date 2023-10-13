@@ -66,8 +66,7 @@ Route::get('/merchdash/{id}',[MerchantController::class,'showMerch']);
 Route::get('/merchprofile/{id}',[MerchantController::class,'profile']);
 
 //product
-Route::get('/add-product',function (){
-    return view('merch.add_product',['title' => 'Add Product']);});
+Route::get('/add_product/{id}',[MerchantController::class,'addProductDisplay']);
 Route::get('/foodies/{id}',[ProductController::class,'index']);
 Route::post('add-product',[ProductController::class,'store']);
 

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->float('price',8,2);
-            $table->string('image');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
             $table->timestamps();
         });
