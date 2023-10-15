@@ -2,46 +2,34 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MerchantCreated extends Mailable
+class PasswordChanged extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
+    public $user;
 
-    private $user;
-    private $merchant;
-
-    public function __construct($user,$merchant)
+    public function __construct($user)
     {
         $this->user = $user;
-        $this->merchant = $merchant;
     }
 
     public function build(){
-        return $this->subject('Merchant Created Notification')
+        return $this->subject("Password Changed Notification")
         ->to(auth()->user()->email)
-        ->view('emails.merchantCreated')
-        ->with([
-            'user' => $this->user,
-            'merchant' => $this->merchant,
-        ]);
-     }
-    /**
-     * Get the message envelope.
-     */
+        ->view('emails.password-changed');
+    }
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Merchant Created',
+            subject: 'Password Changed',
         );
     }
 

@@ -38,6 +38,8 @@ class MerchSignUpController extends Controller
         $user->save();
         $merchant = Merchant::create($validatedData);
 
+        $user = auth()->user();
+        Mail::send(new MerchantCreated($user,$merchant));
         return redirect()->intended('/merchdash');
     }
 }
