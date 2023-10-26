@@ -39,25 +39,19 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($foods as $food )
+                    <tr>
+                        <td>
+                            <p>{{ $food->name }}</p>
+                            <button class="btn btn-primary">Manage</button>
+                        </td>
+                        <td>{{ $food->price }}</td>
+                        <td>{{ $food->description }}</td>
+                        <td><img src="{{ asset('/storage/'. $food->image) }}" alt="Product 1"></td>
+                    </tr>
+                @endforeach
 
-                <tr>
-                    <td>
-                        <p>Product 1</p>
-                        <button class="btn btn-primary">Manage</button>
-                    </td>
-                    <td>$19.99</td>
-                    <td>This is the description of Product 1.</td>
-                    <td><img src="https://via.placeholder.com/100" alt="Product 1"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Product 2</p>
-                        <button class="btn btn-primary">Manage</button>
-                    </td>
-                    <td>$29.99</td>
-                    <td>This is the description of Product 2.</td>
-                    <td><img src="https://via.placeholder.com/100" alt="Product 2"></td>
-                </tr>
+
             </tbody>
         </table>
     </div>

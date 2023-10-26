@@ -3,20 +3,23 @@
 @section('container')
 <div class="d-flex flex-column gap-5 mt-5 justify-content-center flex-wrap">
     @foreach ( $foods as $f )
-        <a href="/foods/" class="card mb-3 text-decoration-none " style="max-width: 540px;">
-            <div class="row g-0">
-            <div class="col-md-4 d-flex flex-column justify-content-center">
-                <img src="{{ asset('storage/icons/test.jpg') }}" class="img-fluid rounded-start" alt="No image available">
+    <div class="card p-2 mb-3 text-decoration-none">
+        <div class="card-content">
+            <div class="image-container">
+                <img src="{{ asset('storage/' . $f->image ) }}" alt="No image available">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Food Name</h5>
-                    <p class="card-text">Food Description</p>
-                </div>
+            <div class="card-details">
+                <h5 class="card-title">{{ $f->name }}</h5>
+                <p class="card-text">{{ $f->description }}</p>
+                <a href="/foods/{{ $f->id }}" class="btn btn-primary">Details</a>
+                <button class="btn btn-danger"><i class="bi bi-cart"></i>Add to Cart</button>
             </div>
-            </div>
-        </a>
-    @endforeach
+        </div>
+    </div>
 
+    @endforeach
+    <style>
+
+    </style>
  </div>
 @endsection

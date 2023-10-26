@@ -83,11 +83,12 @@ Route::post('/delete-area/{id}',[AreaController::class,'destroy']);
 
 
 //update profile
-Route::get('/changepass',function (){
-    return view('profile.password',['title' => 'Password']);
-});
-
+Route::get('/changepass',function (){return view('profile.password',['title' => 'Password']);});
 Route::post('/updatepassword',[UserController::class,'updatePassword'])->name('updatePassword');
 
-//foods
+Route::get('/change-email',function (){return view('profile.email',['title'=> 'Email']);});
+Route::post('/update-email',[UserController::class,'changeEmail']);
 
+Route::get('/change-username',function(){return view('profile.username',['title' => 'Username']);});
+
+//foods

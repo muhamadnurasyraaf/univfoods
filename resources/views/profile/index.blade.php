@@ -7,6 +7,13 @@
             {{ session('success') }}
         </div>
     @endif
+
+    @if(session('email_changed'))
+        <div class="alert alert-success alert-dismissable fade show">
+            {{ session('email_changed') }}
+        </div>
+    @endif
+
     <h2>User Profile</h2>
     <table class="table">
         <tbody>
@@ -17,12 +24,12 @@
             <tr>
                 <td>Username</td>
                 <td><input class="form-control" type="text" readonly value="{{ auth()->user()->username }}"></td>
-                <td><a href="" class="btn btn-outline-danger">Edit</a> </td>
+                <td><a href="/change-username" class="btn btn-outline-danger">Edit</a> </td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td><input type="text" class="form-control" readonly value="{{ auth()->user()->email }}"></td>
-                <td><a href="" class="btn btn-outline-danger">Edit</a></td>
+                <td><a href="/change-email" class="btn btn-outline-danger">Edit</a></td>
             </tr>
             <tr>
                 <td>Email Verified At</td>

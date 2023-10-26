@@ -3,7 +3,12 @@
 @section('container')
 
 <div class="d-flex flex-column justify-content-center align-items-center">
-
+    @if(session('success add-product'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success add-product') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="container mt-5 col-4 border p-4">
         <form action="/add-product" class="d-flex  flex-column" method="POST" enctype="multipart/form-data">
             @csrf
@@ -44,6 +49,8 @@
                     </div>
                 @enderror
             </div>
+
+            <input type="hidden" name="merchant_id" value="{{ $merch_id }}">
 
             <div class="text-center mt-3">
                 <input class="btn btn-danger" type="submit" value="Register Product">

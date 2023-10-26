@@ -23,9 +23,11 @@ class MerchantController extends Controller
     }
 
     public function showMerch($id){
+        $merch = Merchant::find($id);
         return view('merch.dashboard',[
             'title' => 'Merchant Dashboard',
-            'merch' => Merchant::find($id),
+            'merch' => $merch,
+            'foods' => $merch->products,
         ]);
     }
 
