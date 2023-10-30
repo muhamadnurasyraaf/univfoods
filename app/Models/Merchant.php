@@ -24,7 +24,5 @@ class Merchant extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function bankAccount(){
-        return $this->hasOne(BankAccount::class);
-    }
+
 }
