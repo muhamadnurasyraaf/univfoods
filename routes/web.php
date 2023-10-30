@@ -91,4 +91,9 @@ Route::post('/update-email',[UserController::class,'changeEmail']);
 
 Route::get('/change-username',function(){return view('profile.username',['title' => 'Username']);});
 
+//update merchant profile
+
+Route::put('/edit/{id}','MerchantController@editMerchProfile')->name('merchants.edit');
+
+Route::get('/bank/{id}',[MerchantController::class,'bankEditView'])->name('merchbank');
 //foods

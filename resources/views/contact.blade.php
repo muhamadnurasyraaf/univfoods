@@ -8,8 +8,6 @@
         <div class="col-md-6">
             <h3>Contact Information</h3>
             <p>Email: univfoodsofficial@gmail.com</p>
-            <p>Phone: (123) 456-7890</p>
-            <p>Address: 123 Main Street, Cityville, State, 12345</p>
         </div>
         <div class="col-md-6">
             <h3>Contact Form</h3>

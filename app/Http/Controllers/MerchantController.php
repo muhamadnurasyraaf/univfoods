@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 
@@ -24,11 +25,15 @@ class MerchantController extends Controller
 
     public function showMerch($id){
         $merch = Merchant::find($id);
-        return view('merch.dashboard',[
-            'title' => 'Merchant Dashboard',
-            'merch' => $merch,
-            'foods' => $merch->products,
-        ]);
+
+        $bankAcc = $merch->bankAccount;
+
+        if(!$bankAcc){
+            session()->flash('bank_information_error','Please insert or update your bank account information to receive payment!');
+        }
+        $title = 'Merchant Dashboard';
+        $foods = $merch->products;
+        return view('merch.dashboard',compact('title','merch','foods'));
     }
 
     public function addProductDisplay($id){
@@ -38,4 +43,33 @@ class MerchantController extends Controller
             'merch_id' => $merch->id,
         ]);
     }
+
+
+    public function editMerchProfile(Request $request){
+        $data = $request->validate([
+            'name' => 'string|min:5|max:20|unique:merchants|required',
+            'address' => 'string',
+            'description' => 'string',
+        ]);
+
+        $merch = Merchant::find($request->merch_id);
+
+        if (!$merch) {
+            return back()->with('error', 'Merchant not found');
+        }
+
+        $bank = $merch->bankAccount;
+
+      dd($data);
+      dd($merch);
+    }
+
+
+    public function bankEditView($id){
+        $title = 'Bank Account';
+        $merch = Merchant::find($id);
+        $bank = $merch->bankAccount;
+        return view('merch.bank-acc',compact('merch','bank','title'));
+    }
+
 }

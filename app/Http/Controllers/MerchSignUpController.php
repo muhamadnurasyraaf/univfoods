@@ -26,6 +26,9 @@ class MerchSignUpController extends Controller
             'name' => ['required','min:5','max:40','unique:merchants'],
             'area_id' => ['required'],
             'image' => ['image','file','max:1024'],
+            'address' => ['required'],
+            'NoAccount' => ['required','string'],
+            'bankName' => ['required','string'],
         ]);
 
         if($request->file('image')){

@@ -2,6 +2,11 @@
 
 @section('container')
     <h4 class="text-decoration-underline mt-4" style="font-family: Poppins">{{ $merch->name }}'s Dashboard</h1>
+        @if(session('update merch success'))
+            <div class="alert alert-success alert-dismissible show fade">
+                {{ session('update merch success') }}
+            </div>
+        @endif
         <div class="container mt-3 mb-3">
             <div class="row">
                 <div class="col-md-4">
@@ -26,6 +31,12 @@
         </div>
 
         <a href="/merchprofile/{{ $merch->id }}" class="btn btn-danger">Edit Merchant Profile</a>
+
+        @if (session('bank_information_error'))
+            <div class="alert alert-danger mt-3">
+                {{ session('bank_information_error') }}
+            </div>
+        @endif
     <div class="container mt-5">
         <h1>Product Details</h1>
         <table class="table">

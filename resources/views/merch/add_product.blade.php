@@ -30,7 +30,7 @@
 
             <div class="mb-3">
                 <label for="price">Product Price</label>
-                <input type="number" id="price" name="price" class="form-control" placeholder="Product Price(RM)">
+                <input type="text" id="price" name="price"  pattern="[0-9]+([,\.][0-9]+)?" class="form-control" placeholder="Product Price(RM)">
 
                 @error('price')
                     <div class="invalid-feedback">

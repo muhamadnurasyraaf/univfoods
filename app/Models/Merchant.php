@@ -23,4 +23,8 @@ class Merchant extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function bankAccount(){
+        return $this->hasOne(BankAccount::class);
+    }
 }

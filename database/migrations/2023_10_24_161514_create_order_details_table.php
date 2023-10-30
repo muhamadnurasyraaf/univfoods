@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->foreignId('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
             $table->timestamps();
         });
     }

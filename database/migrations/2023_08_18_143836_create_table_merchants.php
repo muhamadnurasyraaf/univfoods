@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('NoAccount');
+            $table->string('bankName');
+            $table->string('duitnow_qr')->nullable();
             $table->timestamps();
         });
     }
