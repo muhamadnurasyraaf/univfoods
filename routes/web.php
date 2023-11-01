@@ -57,6 +57,7 @@ Route::post('/logout',[LoginController::class,'logout']);
 
 //admin
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('admin');
+Route::get('/merchreg-approve',[DashboardController::class,'showMerchReg'])->middleware('admin');
 
 //merchant
 Route::get('/merch-signup',[MerchSignUpController::class,'index'])->middleware('auth');
@@ -93,7 +94,7 @@ Route::get('/change-username',function(){return view('profile.username',['title'
 
 //update merchant profile
 
-Route::put('/edit/{id}','MerchantController@editMerchProfile')->name('merchants.edit');
+Route::put('/edit/{id}',[MerchantController::class,'editMerchProfile'])->name('merchants.edit');
 
 Route::get('/bank/{id}',[MerchantController::class,'bankEditView'])->name('merchbank');
 //foods

@@ -24,30 +24,48 @@
             <textarea class="form-control" id="description" name="description" rows="3" readonly>{{ $merch->description }}</textarea>
         </div>
 
+        <p class="mt-3 fw-bold" style="text-decoration: overline">Bank Account Information</p>
+        <div class="form-group">
+            <label for="bankName" class="form-label">Bank Name : </label>
+            <input type="text" name="bankName" id="bankName" class="form-control" value="{{ $merch->bankName }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="NoAccount" class="form-label">Number Account : </label>
+            <input type="text" name="NoAccount" id="NoAccount" class="form-control" value="{{ $merch->NoAccount }}" readonly>
+        </div>
+
+
         <input type="hidden" name="merch_id" value="{{ $merch->id }}">
         <button type="button" class="btn mt-4 btn-primary" id="editButton">Edit</button>
-        <input type="submit" class="btn btn-success d-none" id="saveButton" value="Save">
+        <input type="submit" class="btn mt-4 btn-success d-none" id="saveButton" value="Save">
     </form>
-    <a href="/bank/{{ $merch->id }}" class="btn btn-danger">Update Bank Account Information</a>
 </div>
 <script>
-    const editbtn = document.getElementById('editButton');
+   document.addEventListener('DOMContentLoaded', () => {
+    const editBtn = document.getElementById('editButton');
     const saveBtn = document.getElementById('saveButton');
     const inputGrp = document.querySelectorAll('input');
     const textArea = document.querySelector('textarea');
     const form = document.querySelector('form');
 
-    editbtn.addEventListener('click', ()=>{
+    editBtn.addEventListener('click', () => {
         textArea.removeAttribute('readonly');
-        inputGrp.forEach( (input) => {
+        inputGrp.forEach((input) => {
             input.removeAttribute('readonly');
         });
-        saveBtn.removeAttribute('d-none');
-
+        saveBtn.classList.remove('d-none');
+        editBtn.classList.add('d-none');
     });
 
-
-
+    saveBtn.addEventListener('click', () => {
+        textArea.setAttribute('readonly', 'true');
+        inputGrp.forEach((input) => {
+            input.setAttribute('readonly', 'true');
+        });
+        saveBtn.classList.add('d-none');
+        editBtn.classList.remove('d-none');
+    });
+});
 
 
 </script>

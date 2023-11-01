@@ -30,9 +30,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="/merchreg-approve">
                         <i class="bi bi-archive"></i>
-                        Orders
+                        Merchants Registration Request
                       </a>
                     </li>
                     <li class="nav-item">

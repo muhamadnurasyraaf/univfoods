@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('NoAccount');
             $table->string('bankName');
             $table->string('duitnow_qr')->nullable();
+            $table->boolean('isApproved')->default(false);
             $table->timestamps();
         });
     }

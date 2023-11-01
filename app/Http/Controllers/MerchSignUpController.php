@@ -37,12 +37,8 @@ class MerchSignUpController extends Controller
 
         $validatedData['user_id'] = $user->id;
 
-        $user->merchant_owner = 1;
-        $user->save();
-        $merchant = Merchant::create($validatedData);
+        Merchant::create($validatedData);
 
-        $user = auth()->user();
-        Mail::send(new MerchantCreated($user,$merchant));
         return redirect()->intended('/merchdash');
     }
 }
