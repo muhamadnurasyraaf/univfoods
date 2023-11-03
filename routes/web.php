@@ -58,6 +58,8 @@ Route::post('/logout',[LoginController::class,'logout']);
 //admin
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('admin');
 Route::get('/merchreg-approve',[DashboardController::class,'showMerchReg'])->middleware('admin');
+Route::post('/merch-approve/{id}',[DashboardController::class,'approve'])->name('merch.approve');
+Route::post('/merch-reject/{id}',[DashboardController::class,'reject'])->name('merch.reject');
 
 //merchant
 Route::get('/merch-signup',[MerchSignUpController::class,'index'])->middleware('auth');

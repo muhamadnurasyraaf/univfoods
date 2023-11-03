@@ -16,4 +16,17 @@ class DashboardController extends Controller
         $title = 'Admin Registration';
         return view('admin.merchreg',compact('title','merchs'));
     }
+
+    public function approve($id){
+        $merchant = Merchant::findOrFail($id);
+        $merchant->isApproved = 1;
+        $merchant->save();
+        return back()->with('approve','Successfully approved the registration');
+    }
+
+    public function reject($id){
+        $merchant = Merchant::findOrFail($id);
+        $merchant->delete();
+        return back()->with('delete','Successfully rejected the registration');
+    }
 }

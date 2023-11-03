@@ -21,8 +21,17 @@
                             <td>{{ $merch->user->username }}</td>
                             <td>{{ $merch->area->area_name }}</td>
                             <td>
-                                <button type="button" class="btn btn-success">Approve</button>
-                                <button type="button" class="btn btn-danger">Reject</button>
+                                <form action="{{ route('merch.approve',$merch->id) }}" method="post" class="mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-success">Approve</button>
+                                </form>
+
+                                <form action="{{ route('merch.reject',$merch->id) }}" method="post">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger">Reject</button>
+                                </form>
+
+
                             </td>
                         </tr>
                         @endif
