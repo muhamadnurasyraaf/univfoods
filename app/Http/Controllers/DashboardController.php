@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use App\Mail\MerchantCreated;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -20,7 +22,11 @@ class DashboardController extends Controller
     public function approve($id){
         $merchant = Merchant::findOrFail($id);
         $merchant->isApproved = 1;
+        $user = $merchant->user;
+        $user->merchant_owner = 1;
+        $user->save();
         $merchant->save();
+        Mail::to($user->email)->queue(new MerchantCreated($user,$merchant));;
         return back()->with('approve','Successfully approved the registration');
     }
 

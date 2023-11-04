@@ -31,12 +31,6 @@
         </div>
 
         <a href="/merchprofile/{{ $merch->id }}" class="btn btn-danger">Edit Merchant Profile</a>
-
-        @if (session('bank_information_error'))
-            <div class="alert alert-danger mt-3">
-                {{ session('bank_information_error') }}
-            </div>
-        @endif
     <div class="container mt-5">
         <h1>Product Details</h1>
         <table class="table">

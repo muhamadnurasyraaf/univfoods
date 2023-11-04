@@ -6,11 +6,11 @@
     <title>Merchant Creation Notification</title>
 </head>
 <body>
-    <h1>Merchant Created Successfully!</h1>
+    <h1>Merchant Registration Approved</h1>
 
     <p>Hello {{ $user->username }},</p>
 
-    <p>We are pleased to inform you that a new merchant has been created. Below are the details:</p>
+    <p>We are pleased to inform you that a new merchant has been approved and created. Below are the details:</p>
 
     <ul>
         <li>Merchant Name: {{ $merchant->name }}</li>

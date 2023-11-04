@@ -25,12 +25,6 @@ class MerchantController extends Controller
 
     public function showMerch($id){
         $merch = Merchant::find($id);
-
-        $bankAcc = $merch->bankAccount;
-
-        if(!$bankAcc){
-            session()->flash('bank_information_error','Please insert or update your bank account information to receive payment!');
-        }
         $title = 'Merchant Dashboard';
         $foods = $merch->products;
         return view('merch.dashboard',compact('title','merch','foods'));

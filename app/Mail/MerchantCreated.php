@@ -28,7 +28,6 @@ class MerchantCreated extends Mailable
 
     public function build(){
         return $this->subject('Merchant Created Notification')
-        ->to(auth()->user()->email)
         ->view('emails.merchantCreated')
         ->with([
             'user' => $this->user,

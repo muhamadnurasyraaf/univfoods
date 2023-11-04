@@ -23,12 +23,12 @@
                             <td>
                                 <form action="{{ route('merch.approve',$merch->id) }}" method="post" class="mb-1">
                                     @csrf
-                                    <button type="button" class="btn btn-success">Approve</button>
+                                    <button type="submit" class="btn btn-success">Approve</button>
                                 </form>
 
                                 <form action="{{ route('merch.reject',$merch->id) }}" method="post">
                                     @csrf
-                                    <button type="button" class="btn btn-danger">Reject</button>
+                                    <button type="submit" class="btn btn-danger">Reject</button>
                                 </form>
 
 
