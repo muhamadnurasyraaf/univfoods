@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EateryController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ContactController;
@@ -99,4 +100,6 @@ Route::get('/change-username',function(){return view('profile.username',['title'
 Route::put('/edit/{id}',[MerchantController::class,'editMerchProfile'])->name('merchants.edit');
 
 Route::get('/bank/{id}',[MerchantController::class,'bankEditView'])->name('merchbank');
+
 //foods
+Route::post('/addtocart',[OrderController::class,'addtocart'])->name('cart.add');

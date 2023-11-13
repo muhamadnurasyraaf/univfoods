@@ -12,7 +12,11 @@
                 <h5 class="card-title">{{ $f->name }}</h5>
                 <p class="card-text">{{ $f->description }}</p>
                 <a href="/foods/{{ $f->id }}" class="btn btn-primary">Details</a>
-                <button class="btn btn-danger"><i class="bi bi-cart"></i>Add to Cart</button>
+                <form action="{{ route('cart.add') }}" method="post">
+                    <input type="hidden" name="food_id" value="{{ $f->id }}">
+                    <input type="hidden" name="quantity" value="1">
+                     <button type="submit" class="btn btn-danger"><i class='bi bi-cart'></i>Add to Cart</button>
+                </form>
             </div>
         </div>
     </div>
