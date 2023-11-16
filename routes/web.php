@@ -102,4 +102,6 @@ Route::put('/edit/{id}',[MerchantController::class,'editMerchProfile'])->name('m
 Route::get('/bank/{id}',[MerchantController::class,'bankEditView'])->name('merchbank');
 
 //foods
-Route::post('/addtocart',[OrderController::class,'addtocart'])->name('cart.add');
+Route::post('/addtocart',[OrderController::class,'cartOrOrdered'])->name('cart.add');
+Route::get('/addcart/{id}',[OrderController::class,'index'])->name('addcart');
+
