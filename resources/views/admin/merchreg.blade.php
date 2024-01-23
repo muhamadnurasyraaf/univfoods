@@ -14,28 +14,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($merchs->count() > 0)
                     @foreach($merchs as $merch)
-                        @if(!$merch->isApproved)
                         <tr>
                             <td>{{ $merch->name }}</td>
                             <td>{{ $merch->user->username }}</td>
                             <td>{{ $merch->area->area_name }}</td>
                             <td>
-                                <form action="{{ route('merch.approve',$merch->id) }}" method="post" class="mb-1">
+                                <form action="{{ route('merch.approve', $merch->id) }}" method="post" class="mb-1">
                                     @csrf
+                                    @method('PATCH') {{-- Method Spoofing --}}
                                     <button type="submit" class="btn btn-success">Approve</button>
                                 </form>
 
-                                <form action="{{ route('merch.reject',$merch->id) }}" method="post">
+                                <form action="{{ route('merch.reject', $merch->id) }}" method="post">
                                     @csrf
+                                    @method('DELETE') {{-- Method Spoofing --}}
                                     <button type="submit" class="btn btn-danger">Reject</button>
                                 </form>
-
-
                             </td>
                         </tr>
-                        @endif
-                   @endforeach
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="4">No Pending Approval at this time</td>
+                    </tr>
+                @endif
 
                 </tbody>
             </table>

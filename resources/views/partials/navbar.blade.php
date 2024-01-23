@@ -18,13 +18,13 @@
                 <a class="nav-link {{ $title == 'Contact' ? 'active' : '' }}" href="/contact">Contact</a>
             </li>
         </ul>
-        
+
         @auth
         <div class="dropdown ms-auto">
             <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Hi , {{ auth()->user()->username }} <i class="bi bi-person-circle"></i></button>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a href="/profile" class="dropdown-item"><i class="bi bi-person-square"></i> Your Profile</a></li>
-                <li><a href="/orderhistory" class="dropdown-item"><i class="bi bi-bag-dash"></i> Your Order History</a></li>
+                <li><a href="/order-history" class="dropdown-item"><i class="bi bi-bag-dash"></i> Your Order History</a></li>
 
                 @if(auth()->user()->merchant_owner)
                     <li><a href="/merchdash" class="dropdown-item">Merchant Dashboard</a></li>
@@ -49,6 +49,6 @@
             </li>
         </ul>
         @endauth
-       
+
     </div>
 </nav>

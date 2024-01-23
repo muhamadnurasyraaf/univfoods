@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\College;
 use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,11 @@ use Illuminate\Support\Facades\Mail;
 class SignUpController extends Controller
 {
     public function index(){
-        return view('signup.index',['title' => 'Sign Up']);
+        $colleges = College::all();
+        return view('signup.index',[
+            'title' => 'Sign Up',
+            'colleges' => $colleges,
+        ]);
     }
 
     public function store(Request $request){
@@ -20,6 +25,7 @@ class SignUpController extends Controller
             'username' => ['required','min:5','max:20','unique:users'],
             'email' => ['required','email:dns','min:10','max:255','unique:users'],
             'password' => ['required','min:7','max:20','confirmed'],
+            'college_id' => ['required'],
             'phone_number' => ['required'],
         ]);
 

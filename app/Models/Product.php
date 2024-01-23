@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Merchant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -12,6 +13,6 @@ class Product extends Model
     protected $guarded = ['id'];
 
     public function merchant(){
-       return $this->hasOne(Merchant::class);
+       return $this->belongsTo(Merchant::class);
     }
 }

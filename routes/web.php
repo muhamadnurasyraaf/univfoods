@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\EateryController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\DashboardController;
@@ -29,7 +30,7 @@ Route::get('/', function () {
         'title' => 'Home',
     ]);
 });
-
+Route::get('/faker',[UserController::class,'create']);
 Route::get('/about',[ContactController::class,'index']);
 Route::get('/contact',function(){
     return view('contact',[
@@ -40,11 +41,8 @@ Route::get('/contact',function(){
 Route::get('/eatery',[EateryController::class,'index']);
 Route::get('/foodies',function (){return view('foodies',['title' => 'Eatery']);});
 
-Route::get('/profile',function(){
-    return view('profile.index',[
-        'title' => 'Profile',
-    ]);
-})->middleware('auth');
+Route::get('/order-history',[OrderController::class,'history'])->middleware('auth');
+Route::get('/profile',[UserController::class,'profile'])->middleware('auth');
 
 //signup
 Route::get('/signup',[SignUpController::class,'index'])->middleware('guest');
@@ -59,8 +57,10 @@ Route::post('/logout',[LoginController::class,'logout']);
 //admin
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('admin');
 Route::get('/merchreg-approve',[DashboardController::class,'showMerchReg'])->middleware('admin');
-Route::post('/merch-approve/{id}',[DashboardController::class,'approve'])->name('merch.approve');
-Route::post('/merch-reject/{id}',[DashboardController::class,'reject'])->name('merch.reject');
+Route::patch('/merch-approve/{id}',[DashboardController::class,'approve'])->name('merch.approve');
+Route::delete('/merch-reject/{id}',[DashboardController::class,'reject'])->name('merch.reject');
+Route::get('/products',[DashboardController::class,'products'])->middleware('admin');
+Route::get('/customers',[DashboardController::class,'customers']);
 
 //merchant
 Route::get('/merch-signup',[MerchSignUpController::class,'index'])->middleware('auth');
@@ -71,7 +71,7 @@ Route::get('/merchprofile/{id}',[MerchantController::class,'profile']);
 
 //product
 Route::get('/add_product/{id}',[MerchantController::class,'addProductDisplay']);
-Route::get('/foodies/{id}',[ProductController::class,'index']);
+Route::get('/foodies/{id}',[ProductController::class,'index'])->name('foodie');
 Route::post('add-product',[ProductController::class,'store']);
 
 
@@ -104,4 +104,8 @@ Route::get('/bank/{id}',[MerchantController::class,'bankEditView'])->name('merch
 //foods
 Route::post('/addtocart',[OrderController::class,'cartOrOrdered'])->name('cart.add');
 Route::get('/addcart/{id}',[OrderController::class,'index'])->name('addcart');
+Route::post('/buy',[OrderController::class,'Purchase'])->name('purchase');
 
+//payment
+Route::get('/payment/{id}',[PaymentController::class,'index'])->name('payment.index');
+Route::post('/payment/submit',[PaymentController::class,'store'])->name('submit.payment');

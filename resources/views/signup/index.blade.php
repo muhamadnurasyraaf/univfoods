@@ -28,6 +28,14 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="college">College</label>
+                <select class="form-control" name="college_id" id="college">
+                    @foreach ($colleges as $college)
+                        <option value="{{ $college->id }}">{{ $college->college_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
                     <input id="password" type="password" name="password" class="form-control  @error('password') is-invalid @enderror" placeholder="password" autocomplete="off">

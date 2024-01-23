@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('merchant_owner')->default(false);
             $table->boolean('isAdmin')->default(false);
             $table->string('phone_number')->nullable();
+            $table->foreignId('college_id')->references('id')->on('colleges')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

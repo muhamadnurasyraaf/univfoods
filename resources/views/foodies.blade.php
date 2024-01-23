@@ -13,7 +13,7 @@
                 <p class="card-text">{{ $f->description }}</p>
                 <a href="/foods/{{ $f->id }}" class="btn btn-primary">Details</a>
                 <input type="hidden" value="{{ $f->id }}">
-                <a href="/addcart/{{ $f->id }}" class="btn btn-danger"><i class='bi bi-cart'></i>Add to Cart</a>
+                <a href="/addcart/{{ $f->id }}" class="btn btn-danger"><i class='bi bi-cart'></i>Purchase</a>
             </div>
         </div>
     </div>

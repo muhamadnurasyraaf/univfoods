@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Order;
+use App\Models\College;
 use App\Models\Merchant;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +23,9 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $guarded = ['id'];
 
+    public function college(){
+        return $this->belongsTo(College::class);
+    }
     public function isAdmin(){
         return $this->isAdmin;
     }

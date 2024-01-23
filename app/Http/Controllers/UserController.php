@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\EmailChanged;
+use App\Models\Area;
 use App\Models\User;
+use App\Models\College;
+use App\Models\Merchant;
+use App\Mail\EmailChanged;
 use Illuminate\Http\Request;
 use App\Mail\PasswordChanged;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +17,60 @@ class UserController extends Controller
 {
 
 
+    public function create(){
+        try {
+
+
+            $user = Area::create([
+                'area_name' => 'UiTM Segamat'
+            ]);
+
+            College::create([
+                'college_name' => 'Taming Sari (TS)',
+                'category' => 'KKA'
+            ]);
+            College::create([
+                'college_name' => 'Sulok Belingkong (SB)',
+                'category' => 'KKA'
+            ]);
+            College::create([
+                'college_name' => 'Sri Rempai (SR)',
+                'category' => 'KKA'
+            ]);
+            College::create([
+                'college_name' => 'Sri Manja Kini',
+                'category' => 'KKC',
+            ]);
+            College::create([
+                'college_name' => 'Nilam',
+                'category' => 'KKB',
+            ]);
+            User::create([
+                'username' => 'asyraaf',
+                'email' => 'masyraaf14@gmail.com',
+                'phone_number' => '0102781087',
+                'password' => bcrypt('asyraaf123'),
+                'isAdmin' => 1,
+                'college_id' => 1,
+            ]);
+            $merchant = Merchant::create([
+                'name' => 'PLFC Port',
+                'user_id' => 1,
+                'area_id' => 1,
+                'address' => 'Jementah, Segamat',
+                'description' => null,
+                'image' => 'merch-icon/6dakp5XnzRtWlYwxygt9i77RuHga8jHpyYhs7L88.png',
+                'NoAccount' => '001253157648',
+                'bankName' => 'Maybank',
+                'duitnow_qr' => null,
+                'isApproved' => 1,
+            ]);
+            return response()->json($user);
+        } catch (\Exception $e) {
+            return response('Error creating data' . $e->getMessage());
+        }
+
+    }
     public function updatePassword(Request $request){
         $request->validate([
             'current_password' => 'required',
@@ -52,5 +109,13 @@ class UserController extends Controller
          }else{
             return back()->withErrors(['old_password' => 'Old Email given is incorrect'])->withInput();
          }
+    }
+
+    public function profile(){
+        $user  = User::with('college')->findOrFail(auth()->user()->id);
+        return view('profile.index',[
+            'title' => 'Profile',
+            'user' => $user,
+        ]);
     }
 }

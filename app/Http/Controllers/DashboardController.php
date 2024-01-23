@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 use App\Mail\MerchantCreated;
@@ -10,11 +13,31 @@ use Illuminate\Support\Facades\Mail;
 class DashboardController extends Controller
 {
     public function index(){
-        return view('admin/dashboard.index',['title' => 'Dashboard']);
+        $orders = Order::with('product.merchant')->get();
+        return view('admin/dashboard.index',[
+            'title' => 'Dashboard',
+            'orders' => $orders,
+        ]);
     }
 
+    public function products(){
+        $products = Product::with('merchant')->get();
+        return view('admin.dashboard.products',[
+            'title' => 'Products',
+            'products' => $products,
+        ]);
+
+    }
+
+    public function customers(){
+        $customers = User::where('isAdmin',0)->get();
+        return view('admin.dashboard.customers',[
+            'title' => 'Customers',
+            'customer' => $customers,
+        ]);
+    }
     public function showMerchReg(){
-        $merchs = Merchant::all();
+        $merchs = Merchant::where('isApproved',0)->get();
         $title = 'Admin Registration';
         return view('admin.merchreg',compact('title','merchs'));
     }
